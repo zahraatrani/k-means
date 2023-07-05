@@ -243,7 +243,7 @@ $pusat_centroid = get_pusat_centroid($centroid, $data);
             <td>Kode</td>
             <td>Nama</td>
             <td>Cluster</td>
-        </tr></thead>                
+        </tr></thead>             
         <?php 
 
         foreach($ALTERNATIF as $key => $val):

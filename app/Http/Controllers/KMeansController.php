@@ -43,6 +43,12 @@ class KMeansController extends Controller
         ->join('tb_alternatif','tb_alternatif.id_alternatif','=','tb_penjualan.id_alternatif')
         ->where('tb_penjualan.tanggal','>=',$tanggal_awal)
         ->get();
+        
+        $data['rows_penjualan'] = DB::table('tb_penjualan')
+        ->select('*')
+        ->join('tb_alternatif','tb_alternatif.id_alternatif','=','tb_penjualan.id_alternatif')
+        ->where('tb_penjualan.tanggal','=<',$tanggal_akhir)
+        ->get();
         return view('kmeans.index', $data);
     }
 
