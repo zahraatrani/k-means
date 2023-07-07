@@ -30,14 +30,14 @@ foreach ($rows_centroid as $row) {
 
 // print_r($centroid);
 foreach ($rows_data as $row) {
-    $data[$row->id_alternatif][$row->id_kriteria] = $row->nilai;
+    $rows_data[$row->id_alternatif][$row->id_kriteria] = $row->nilai;
 }
 
-function get_pusat_centroid($centroid = array(), $data = array())
+function get_pusat_centroid($centroid = array(), $rows_data = array())
 {
     $arr = array();
     foreach ($centroid as $key => $val) {
-        $arr[$key] = $data[$val];
+        $arr[$key] = $rows_data[$val];
     }
     return $arr;
 }
@@ -51,13 +51,13 @@ function get_jarak($row_data, $row_pusat_centroid)
     return sqrt($result);
 }
 
-function get_jarak_centroid($pusat_centroid = array(), $data = array())
+function get_jarak_centroid($pusat_centroid = array(), $rows_data = array())
 {
     $arr = array();
 
-    foreach ($data as $key => $val) {
+    foreach ($rows_data as $key => $val) {
         foreach ($pusat_centroid as $k => $v) {
-            $arr[$key][$k] = get_jarak($data[$key], $pusat_centroid[$k]);
+            $arr[$key][$k] = get_jarak($rows_data[$key], $pusat_centroid[$k]);
         }
     }
     return $arr;
@@ -76,15 +76,15 @@ function get_keanggotaan($jarak_centroid = array())
 }
 
 
-function get_pusat_centroid_baru($data, $keanggotaan)
+function get_pusat_centroid_baru($rows_data, $keanggotaan)
 {
     $arr = array();
-    foreach ($data as $key => $val) {
+    foreach ($rows_data as $key => $val) {
         foreach ($val as $k => $v) {
             $arr[$keanggotaan[$key]][$k][] = $v;
         }
     }
-    $pembagi = count($data);
+    $pembagi = count($rows_data);
     $result = array();
     foreach ($arr as $key => $val) {
         foreach ($val as $k => $v) {
@@ -93,7 +93,7 @@ function get_pusat_centroid_baru($data, $keanggotaan)
     }
     return $result;
 }
-$pusat_centroid = get_pusat_centroid($centroid, $data);
+$pusat_centroid = get_pusat_centroid($centroid, $rows_data);
 
 
 ?>
@@ -153,7 +153,7 @@ $pusat_centroid = get_pusat_centroid($centroid, $data);
                             <?php
                             $iterasi = 1;
                             while (!$stop && $iterasi <= $maksimum) :
-                                $jarak_centroid = get_jarak_centroid($pusat_centroid, $data);
+                                $jarak_centroid = get_jarak_centroid($pusat_centroid, $rows_data);
                                 $keanggotaan = get_keanggotaan($jarak_centroid);
                             ?>
                                 <div class="panel panel-default">
@@ -201,7 +201,7 @@ $pusat_centroid = get_pusat_centroid($centroid, $data);
                                             <?php foreach ($jarak_centroid as $key => $val) : ?>
                                                 <tr>
                                                     <td><?= $ALTERNATIF[$key]['kode'] ?></td>
-                                                    <?php foreach ($data[$key] as $k => $v) : ?>
+                                                    <?php foreach ($rows_data[$key] as $k => $v) : ?>
                                                         <td><?= $v ?></td>
                                                     <?php endforeach ?>
                                                     <?php foreach ($val as $k => $v) : ?>
@@ -224,7 +224,7 @@ $pusat_centroid = get_pusat_centroid($centroid, $data);
                                         } else {
                                             $iterasi++;
                                             $ket = "Karena group baru (" . implode(',', $keanggotaan) . ") <> group sebelumnya (" . implode(',', $groups) . "), maka iterasi dilanjutkan.";
-                                            $pusat_centroid = get_pusat_centroid_baru($data, $keanggotaan);
+                                            $pusat_centroid = get_pusat_centroid_baru($rows_data, $keanggotaan);
                                             $groups = $keanggotaan;
                                         }
                                         ?>

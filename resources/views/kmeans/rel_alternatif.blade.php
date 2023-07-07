@@ -32,7 +32,7 @@
 
 
             foreach ($rows_data as $row) {
-              $data[$row->id_alternatif][$row->id_kriteria]=$row->nilai;
+              $rows_data[$row->id_alternatif][$row->id_kriteria]=$row->nilai;
             }
 
 
@@ -49,7 +49,7 @@
               </tr>
             </thead>
            <tbody>
-              @foreach($data as $key => $value)
+              @foreach($rows_data as $key => $value)
               <tr>
                  <th>{{$ALTERNATIF[$key]['nama']}}</th>
                 @foreach($value as $k => $v)

@@ -22,12 +22,12 @@ class KMeansController extends Controller
     {
         $data['title'] = 'Perhitungan K-Means';
         $data['rows_kriteria'] = DB::table('tb_kriteria')->get();
-        $data['rows_alternatif'] = DB::table('tb_alternatif')->get();
-        $data['rows_centroid'] = DB::table('tb_alternatif')->limit(3)->get();
-        $data['rows_data'] = DB::table('tb_rel_alternatif')
+        $data['rows_alternatif'] = DB::table('tbl_barang')->get();
+        $data['rows_centroid'] = DB::table('tbl_barang')->limit(3)->get();
+        $data['rows_data'] = DB::table('tbl_rel_alternatif')
             ->select('*')
-            ->join('tb_alternatif', 'tb_alternatif.id_alternatif', '=', 'tb_rel_alternatif.id_alternatif')
-            ->join('tb_kriteria', 'tb_kriteria.id_kriteria', '=', 'tb_rel_alternatif.id_kriteria')
+            ->join('tbl_barang', 'tbl_barang.id_alternatif', '=', 'tbl_rel_alternatif.id_alternatif')
+            ->join('tb_kriteria', 'tb_kriteria.id_kriteria', '=', 'tbl_rel_alternatif.id_kriteria')
             ->get();
 
         $tanggal_awal = date('Y-m-d');
@@ -38,16 +38,16 @@ class KMeansController extends Controller
         //     $tanggal_akhir = $request->query('tanggal_akhir');
         // }
 
-        $data['rows_penjualan'] = DB::table('tb_penjualan')
+        $data['rows_penjualan'] = DB::table('tbl_penjualan')
             ->select('*')
-            ->join('tb_alternatif', 'tb_alternatif.id_alternatif', '=', 'tb_penjualan.id_alternatif')
-            ->where('tb_penjualan.tanggal', '>=', $tanggal_awal)
+            ->join('tbl_barang', 'tbl_barang.id_alternatif', '=', 'tbl_penjualan.id_alternatif')
+            ->where('tbl_penjualan.tanggal', '>=', $tanggal_awal)
             ->get();
 
-        $data['rows_penjualan'] = DB::table('tb_penjualan')
+        $data['rows_penjualan'] = DB::table('tbl_penjualan')
             ->select('*')
-            ->join('tb_alternatif', 'tb_alternatif.id_alternatif', '=', 'tb_penjualan.id_alternatif')
-            ->where('tb_penjualan.tanggal', '=<', $tanggal_akhir)
+            ->join('tbl_barang', 'tbl_barang.id_alternatif', '=', 'tbl_penjualan.id_alternatif')
+            ->where('tbl_penjualan.tanggal', '=<', $tanggal_akhir)
             ->get();
         return view('kmeans.index', $data);
     }
@@ -57,12 +57,12 @@ class KMeansController extends Controller
     {
         $data['title'] = 'Perhitungan K-Means';
         $data['rows_kriteria'] = DB::table('tb_kriteria')->get();
-        $data['rows_alternatif'] = DB::table('tb_alternatif')->get();
-        $data['rows_centroid'] = DB::table('tb_alternatif')->limit(3)->get();
-        $data['rows_data'] = DB::table('tb_rel_alternatif')
+        $data['rows_alternatif'] = DB::table('tbl_barang')->get();
+        $data['rows_centroid'] = DB::table('tbl_barang')->limit(3)->get();
+        $data['rows_data'] = DB::table('tbl_rel_alternatif')
             ->select('*')
-            ->join('tb_alternatif', 'tb_alternatif.id_alternatif', '=', 'tb_rel_alternatif.id_alternatif')
-            ->join('tb_kriteria', 'tb_kriteria.id_kriteria', '=', 'tb_rel_alternatif.id_kriteria')
+            ->join('tbl_barang', 'tbl_barang.id_alternatif', '=', 'tbl_rel_alternatif.id_alternatif')
+            ->join('tb_kriteria', 'tb_kriteria.id_kriteria', '=', 'tbl_rel_alternatif.id_kriteria')
             ->get();
 
 
@@ -85,8 +85,8 @@ class KMeansController extends Controller
 
     public function alternatif_hapus($id)
     {
-        DB::table('tb_alternatif')->where('id_alternatif', '=', $id)->delete();
-        DB::table('tb_rel_alternatif')->where('id_alternatif', '=', $id)->delete();
+        DB::table('tbl_barang')->where('id_alternatif', '=', $id)->delete();
+        DB::table('tbl_rel_alternatif')->where('id_alternatif', '=', $id)->delete();
         return redirect('/k_alternatif');
     }
 
@@ -99,7 +99,7 @@ class KMeansController extends Controller
 
     public function penjualan_hapus($id)
     {
-        DB::table('tb_penjualan')->where('id_penjualan', '=', $id)->delete();
+        DB::table('tbl_penjualan')->where('id_penjualan', '=', $id)->delete();
         return redirect('/k_penjualan');
     }
 
@@ -128,9 +128,9 @@ class KMeansController extends Controller
     public function penjualan()
     {
         $data['title'] = 'Data Transaksi Penjualan';
-        $data['rows'] = DB::table('tb_penjualan')
+        $data['rows'] = DB::table('tbl_penjualan')
             ->select('*')
-            ->join('tb_alternatif', 'tb_alternatif.id_alternatif', '=', 'tb_penjualan.id_alternatif')
+            ->join('tbl_barang', 'tbl_barang.id_alternatif', '=', 'tbl_penjualan.id_alternatif')
             ->get();
         return view('kmeans.penjualan', $data);
     }
@@ -164,14 +164,14 @@ class KMeansController extends Controller
         $data['title'] = 'Data Clustering';
 
         $data['rows_kriteria'] = DB::table('tb_kriteria')->get();
-        $data['rows_alternatif'] = DB::table('tb_alternatif')->get();
+        $data['rows_alternatif'] = DB::table('tbl_barang')->get();
 
 
 
-        $data['rows_data'] = DB::table('tb_rel_alternatif')
+        $data['rows_data'] = DB::table('tbl_rel_alternatif')
             ->select('*')
-            ->join('tb_alternatif', 'tb_alternatif.id_alternatif', '=', 'tb_rel_alternatif.id_alternatif')
-            ->join('tb_kriteria', 'tb_kriteria.id_kriteria', '=', 'tb_rel_alternatif.id_kriteria')
+            ->join('tbl_barang', 'tbl_barang.id_alternatif', '=', 'tbl_rel_alternatif.id_alternatif')
+            ->join('tb_kriteria', 'tb_kriteria.id_kriteria', '=', 'tbl_rel_alternatif.id_kriteria')
             ->get();
 
         return view('kmeans.rel_alternatif', $data);
@@ -185,11 +185,11 @@ class KMeansController extends Controller
         $data['rows_kriteria'] = DB::table('tb_kriteria')->get();
 
         $data['id_alternatif_kunci'] = $id;
-        $data['rows'] = DB::table('tb_rel_alternatif')
+        $data['rows'] = DB::table('tbl_rel_alternatif')
             ->select('*')
-            ->join('tb_alternatif', 'tb_alternatif.id_alternatif', '=', 'tb_rel_alternatif.id_alternatif')
-            ->join('tb_kriteria', 'tb_kriteria.id_kriteria', '=', 'tb_rel_alternatif.id_kriteria')
-            ->where('tb_alternatif.id_alternatif', '=', $id)
+            ->join('tbl_barang', 'tbl_barang.id_alternatif', '=', 'tbl_rel_alternatif.id_alternatif')
+            ->join('tb_kriteria', 'tb_kriteria.id_kriteria', '=', 'tbl_rel_alternatif.id_kriteria')
+            ->where('tbl_barang.id_alternatif', '=', $id)
             ->get();
         return view('kmeans.relasi_ubah', $data);
     }
@@ -197,11 +197,11 @@ class KMeansController extends Controller
     public function relasi_ubah_simpan(request $req, $id)
     {
 
-        $rows_data = DB::table('tb_rel_alternatif')
+        $rows_data = DB::table('tbl_rel_alternatif')
             ->select('*')
-            ->join('tb_alternatif', 'tb_alternatif.id_alternatif', '=', 'tb_rel_alternatif.id_alternatif')
-            ->join('tb_kriteria', 'tb_kriteria.id_kriteria', '=', 'tb_rel_alternatif.id_kriteria')
-            ->where('tb_alternatif.id_alternatif', '=', $id)
+            ->join('tbl_barang', 'tbl_barang.id_alternatif', '=', 'tbl_rel_alternatif.id_alternatif')
+            ->join('tb_kriteria', 'tb_kriteria.id_kriteria', '=', 'tbl_rel_alternatif.id_kriteria')
+            ->where('tbl_barang.id_alternatif', '=', $id)
             ->get();
 
 
@@ -216,8 +216,8 @@ class KMeansController extends Controller
     public function kmeans_import()
     {
 
-        DB::table('tb_alternatif')->truncate();
-        DB::table('tb_rel_alternatif')->truncate();
+        DB::table('tbl_barang')->truncate();
+        DB::table('tbl_rel_alternatif')->truncate();
 
         $rows_alt = Produk::all();
         $no = 1;
@@ -229,7 +229,7 @@ class KMeansController extends Controller
             $no++;
         }
 
-        $rows = DB::table('tb_alternatif')
+        $rows = DB::table('tbl_barang')
             ->get();
         foreach ($rows as $row) {
             $rka = DB::table('tb_kriteria')
