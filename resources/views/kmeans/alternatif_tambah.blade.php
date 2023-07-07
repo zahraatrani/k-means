@@ -8,7 +8,7 @@
 			<div class="x_title">
 				<h2>{{$title}}</h2>
 				<ul class="nav navbar-right panel_toolbox">
-				
+
 				</ul>
 				<div class="clearfix"></div>
 			</div>
@@ -18,7 +18,7 @@
 					{{csrf_field() }}
 
 					<div class="item form-group">
-						<label class="col-form-label col-md-3 col-sm-3 label-align" for="n_toko">ID Barang <span class="required">*</span>
+						<label class="col-form-label col-md-3 col-sm-3 label-align" for="n_toko">Kode Barang <span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 ">
 							<input type="text" required="required" class="form-control " name="kode">
@@ -32,16 +32,6 @@
 							<input type="text" required="required" class="form-control " name="nama">
 						</div>
 					</div>
-
-					<div class="item form-group">
-						<label class="col-form-label col-md-3 col-sm-3 label-align" for="n_toko">Keterangan Barang <span class="required">*</span>
-						</label>
-						<div class="col-md-6 col-sm-6 ">
-							<input type="text" required="required" class="form-control " name="keterangan">
-						</div>
-					</div>
-
-		
 
 
 					<div class="ln_solid"></div>

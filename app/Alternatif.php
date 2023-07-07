@@ -6,12 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Alternatif extends Model
 {
-    protected $table = 'tb_alternatif';
+    protected $table = 'tbl_barang';
     protected $fillable = [
         'id_alternatif',
-        'kode_alternatif',
         'nama_alternatif',
         'keterangan',
-    
     ];
 }

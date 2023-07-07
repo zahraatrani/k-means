@@ -127,7 +127,7 @@
                 <li>
                   <a><i class="fa fa-list"></i> K-Means <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu">
-                   <li><a href="/k_alternatif">Data Barang</a></li>
+                    <li><a href="{{ route('barang.list') }}">Data Barang</a></li>
                     <li><a href="/k_penjualan">Data Penjualan</a></li>
                     <li><a href="/k_rel_alternatif">Data Clustering</a></li>
                     <li><a href="/k_means">K Means</a></li>
@@ -138,8 +138,8 @@
                     <li><a href="/k_laporan">Laporan</a></li>
                   </ul>
                 </li>
-                
-               
+
+
               </ul>
             </div>
           </div>
@@ -154,7 +154,7 @@
               <ul class="nav side-menu">
                 <li><a href="/home"><i class="fa fa-home"></i> Home</span></a>
                 </li>
-               <li><a href="/k_laporan"><i class="fa fa-file-code-o"></i>Laporan</a></li>
+                <li><a href="/k_laporan"><i class="fa fa-file-code-o"></i>Laporan</a></li>
               </ul>
             </div>
           </div>
@@ -175,8 +175,8 @@
                   <img src="{{asset('images/img.jpg')}}" alt="">Admin
                 </a>
                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                
-                  
+
+
 
                   <a class="dropdown-item" href="/logout"><i class="fa fa-sign-out pull-right"></i> Keluar</a>
                 </div>
@@ -208,117 +208,117 @@
     <!-- footer content -->
     <footer>
       <div class="pull-right">
-      
+
       </div>
       <div class="clearfix"></div>
     </footer>
     <!-- /footer content -->
   </div>
-</div>
+  </div>
 
 
-<!-- Bootstrap -->
-<script src="../admin/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<!-- FastClick -->
-<script src="../admin/vendors/fastclick/lib/fastclick.js"></script>
-<!-- NProgress -->
-<script src="../admin/vendors/nprogress/nprogress.js"></script>
-<!-- Smart Wizard -->
-<script src="../admin/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
-<!-- Custom Theme Scripts -->
-<script src="../admin/build/js/custom.min.js"></script>
-<!-- Datatables -->
-<script src="../admin/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="../admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../admin/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-<script src="../admin/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="../admin/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-<script src="../admin/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-<script src="../admin/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-<script src="../admin/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-<script src="../admin/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../admin/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-<script src="../admin/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-<script src="../admin/vendors/jszip/dist/jszip.min.js"></script>
-<script src="../admin/vendors/pdfmake/build/pdfmake.min.js"></script>
-<script src="../admin/vendors/pdfmake/build/vfs_fonts.js"></script>
-<!-- CKEDITOR Online -->
-<script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
-<!-- Sweet Alert Online -->
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<!-- Dropzone -->
-<script src="../admin/vendors/dropzone/dist/min/dropzone.min.js"></script>
-<script src="../admin/vendors/nprogress/nprogress.js"></script>
-<script>
-  var konten = document.getElementById("deskripsi");
-  CKEDITOR.replace(deskripsi, {
-    language: 'en-gb'
-  });
-  CKEDITOR.config.allowedContent = true;
-</script>
+  <!-- Bootstrap -->
+  <script src="../admin/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- FastClick -->
+  <script src="../admin/vendors/fastclick/lib/fastclick.js"></script>
+  <!-- NProgress -->
+  <script src="../admin/vendors/nprogress/nprogress.js"></script>
+  <!-- Smart Wizard -->
+  <script src="../admin/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+  <!-- Custom Theme Scripts -->
+  <script src="../admin/build/js/custom.min.js"></script>
+  <!-- Datatables -->
+  <script src="../admin/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="../admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <script src="../admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="../admin/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+  <script src="../admin/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+  <script src="../admin/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+  <script src="../admin/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+  <script src="../admin/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+  <script src="../admin/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+  <script src="../admin/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="../admin/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+  <script src="../admin/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+  <script src="../admin/vendors/jszip/dist/jszip.min.js"></script>
+  <script src="../admin/vendors/pdfmake/build/pdfmake.min.js"></script>
+  <script src="../admin/vendors/pdfmake/build/vfs_fonts.js"></script>
+  <!-- CKEDITOR Online -->
+  <script src="https://cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+  <!-- Sweet Alert Online -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <!-- Dropzone -->
+  <script src="../admin/vendors/dropzone/dist/min/dropzone.min.js"></script>
+  <script src="../admin/vendors/nprogress/nprogress.js"></script>
+  <script>
+    var konten = document.getElementById("deskripsi");
+    CKEDITOR.replace(deskripsi, {
+      language: 'en-gb'
+    });
+    CKEDITOR.config.allowedContent = true;
+  </script>
 
-<script>
-  $(function() {
-    $("#saldoMasuk").DataTable({
-      "responsive": true,
-      "autoWidth": true,
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": true,
-      "responsive": true,
-      "language": {
-        "url": '../admin/vendors/ID.json'
-      }
+  <script>
+    $(function() {
+      $("#saldoMasuk").DataTable({
+        "responsive": true,
+        "autoWidth": true,
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": true,
+        "responsive": true,
+        "language": {
+          "url": '../admin/vendors/ID.json'
+        }
+      });
+
+      $("#saldoKeluar").DataTable({
+        "responsive": true,
+        "autoWidth": true,
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": true,
+        "responsive": true,
+        "language": {
+          "url": '../admin/vendors/ID.json'
+        }
+      });
+
+      $("#riwayatSaldo").DataTable({
+        "responsive": true,
+        "autoWidth": true,
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": true,
+        "responsive": true,
+        "language": {
+          "url": '../admin/vendors/ID.json'
+        }
+      });
     });
 
-    $("#saldoKeluar").DataTable({
-      "responsive": true,
-      "autoWidth": true,
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": true,
-      "responsive": true,
-      "language": {
-        "url": '../admin/vendors/ID.json'
-      }
+    $(function() {
+      $("#daftarproduk").DataTable({
+        "responsive": true,
+        "autoWidth": true,
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": true,
+        "responsive": true,
+      });
     });
-
-    $("#riwayatSaldo").DataTable({
-      "responsive": true,
-      "autoWidth": true,
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": true,
-      "responsive": true,
-      "language": {
-        "url": '../admin/vendors/ID.json'
-      }
-    });
-  });
-
-  $(function() {
-    $("#daftarproduk").DataTable({
-      "responsive": true,
-      "autoWidth": true,
-      "paging": true,
-      "lengthChange": true,
-      "searching": true,
-      "ordering": true,
-      "info": true,
-      "autoWidth": true,
-      "responsive": true,
-    });
-  });
 
     // url=pesanan.pelanggan_historipesanan
     $(function() {

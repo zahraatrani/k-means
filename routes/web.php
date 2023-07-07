@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RiwayatTranksaksiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\PenjualanController;
 use App\Mail\NotifPendaftaranReseller;
 use FontLib\Table\Type\name;
 
@@ -40,18 +42,13 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 
-
-
-	
-
-
 	// K-MEANS
 	Route::get('/k_means', 'KMeansController@index')->name('k_means');
 
 	Route::get('/k_alternatif', 'KMeansController@alternatif')->name('k_alternatif');
 	Route::get('/k_laporan', 'KMeansController@laporan')->name('k_laporan');
 	Route::get('/k_alternatif_hapus/{id}', 'KMeansController@alternatif_hapus')->name('k_alternatif_hapus');
-	
+
 	Route::get('/k_kriteria_hapus/{id}', 'KMeansController@kriteria_hapus')->name('k_kriteria_hapus');
 
 	Route::get('/k_penjualan_hapus/{id}', 'KMeansController@penjualan_hapus')->name('k_penjualan_hapus');
@@ -71,7 +68,13 @@ Route::group(['middleware' => ['auth', 'checkRole:admin']], function () {
 	Route::get('/relasi_ubah/{id}', 'KMeansController@relasi_ubah')->name('relasi_ubah');
 	Route::post('/relasi_ubah_simpan/{id}', 'KMeansController@relasi_ubah_simpan')->name('relasi_ubah_simpan');
 
-	
+
+	Route::get('barang', [BarangController::class, 'index'])->name('barang.list');
+	Route::get('barang/add', [BarangController::class, 'create'])->name('barang.create');
+	Route::post('barang/store', [BarangController::class, 'store'])->name('barang.add');
+	Route::get('barang/edit/{id}', [BarangController::class, 'edit'])->name('barang.edit');
+	Route::post('barang/update/{id}', [BarangController::class, 'update'])->name('barang.update');
+	Route::get('barang/delete/{id}', [BarangController::class, 'destroy'])->name('barang.destroy');
 });
 
 Route::group(['middleware' => ['auth', 'checkRole:admin,pelanggan']], function () {
@@ -109,7 +112,6 @@ Route::group(['middleware' => ['auth', 'checkRole:admin,pelanggan']], function (
 	Route::get('/pelanggan_pesanandikonfirmasi/{id}', 'RiwayatTranksaksiController@pelanggan_pesanandikonfirmasi');
 	Route::get('/pelanggan_histori/{id}', 'RiwayatTranksaksiController@pelanggan_pesananhistori');
 	Route::delete('/hapuspesanan/{id}', 'RiwayatTranksaksiController@destroy')->name('tranksaksi.destroy');
-
 });
 
 // Tampilan Mobile Tanpa Login
@@ -117,13 +119,13 @@ Route::get('m/login', function () {
 	return view('m/login');
 });
 Route::get('/m', 'DashboardController@mDashboard')->name('m');
-Route::get('/produk_cari','DashboardController@mCari');
+Route::get('/produk_cari', 'DashboardController@mCari');
 Route::get('m_dashboard_{kategori}', 'DashboardController@mDashboard_kategori')->name('mdashboard.kategori');
 Route::get('/mShowproduk/{id}', 'DashboardController@mShowproduk')->name('mShow.Produk');
 
 // Tampilan Harus Login
 Route::group(['middleware' => ['auth', 'checkRole:admin,pelanggan']], function () {
-	Route::post('/mAddcart','AddcartController@mAddcart')->name('m.addcart');
-	Route::get('/mcart','AddcartController@mcart')->name('m.cart');
-	Route::get('mprofile','UserController@mprofil');
+	Route::post('/mAddcart', 'AddcartController@mAddcart')->name('m.addcart');
+	Route::get('/mcart', 'AddcartController@mcart')->name('m.cart');
+	Route::get('mprofile', 'UserController@mprofil');
 });
