@@ -8,20 +8,20 @@
 			<div class="x_title">
 				<h2>{{$title}}</h2>
 				<ul class="nav navbar-right panel_toolbox">
-
+				
 				</ul>
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
 				<br />
-				<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="/tambah_alternatif_simpan" method="post" enctype="multipart/form-data">
+				<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="/ubah_alternatif_simpan/{{$id}}" method="post" enctype="multipart/form-data">
 					{{csrf_field() }}
 
 					<div class="item form-group">
-						<label class="col-form-label col-md-3 col-sm-3 label-align" for="n_toko">Kode Barang <span class="required">*</span>
+						<label class="col-form-label col-md-3 col-sm-3 label-align" for="n_toko">ID Barang <span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 ">
-							<input type="text" required="required" class="form-control " name="kode">
+							<input type="text" required="required" class="form-control " name="kode" value="{{$id}}">
 						</div>
 					</div>
 
@@ -29,25 +29,19 @@
 						<label class="col-form-label col-md-3 col-sm-3 label-align" for="n_toko">Nama Barang <span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 ">
-							<input type="text" required="required" class="form-control " name="nama">
+							<input type="text" required="required" class="form-control " name="nama" value="{{$row->nama_alternatif}}">
 						</div>
 					</div>
 
 					<div class="item form-group">
-						<label class="col-form-label col-md-3 col-sm-3 label-align" for="n_toko">Stock<span class="required">*</span>
+						<label class="col-form-label col-md-3 col-sm-3 label-align" for="n_toko">Keterangan Barang <span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 ">
-							<input type="text" required="required" class="form-control " name="stock">
+							<input type="text" required="required" class="form-control " name="keterangan" value="{{$row->keterangan}}">
 						</div>
 					</div>
 
-					<div class="item form-group">
-						<label class="col-form-label col-md-3 col-sm-3 label-align" for="n_toko">satuan<span class="required">*</span>
-						</label>
-						<div class="col-md-6 col-sm-6 ">
-							<input type="text" required="required" class="form-control " name="satuan">
-						</div>
-					</div>
+		
 
 
 					<div class="ln_solid"></div>

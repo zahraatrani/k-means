@@ -39,6 +39,7 @@
                 <td>{{ $row->kode_alternatif }}</td>
                 <td>{{ $row->nama_alternatif }}</td>
                 <td class="nw">
+                  <a class="btn btn-xs btn-warning" href="/k_alternatif_ubah/{{$row->kode_alternatif}}"><span class="glyphicon glyphicon-edit"></span></a>
                   <a class="btn btn-xs btn-danger" href="/k_alternatif_hapus/{{$row->id_alternatif}}" onclick="return confirm('Hapus data?')"><span class="glyphicon glyphicon-trash"></span></a>
                 </td>
               </tr>

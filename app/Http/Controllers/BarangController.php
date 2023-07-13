@@ -73,7 +73,7 @@ class BarangController extends Controller
         $barang_tabel->stock = $Req->stock;
         $barang_tabel->satuan = $Req->satuan;
         $barang_tabel->save();
-        return redirect('/barang');
+        return redirect('/k_alternatif');
     }
 
     /**
@@ -167,6 +167,6 @@ class BarangController extends Controller
         //         ]);
         // }        
         DB::table('tbl_barang')->where('id_alternatif', '=', $id)->delete();
-        return redirect('/barang');
+        return redirect('/k_alternatif');
     }
 }

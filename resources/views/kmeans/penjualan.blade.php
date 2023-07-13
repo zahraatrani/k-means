@@ -27,6 +27,7 @@
             <tr>
               <th>No</th>
               <th>Tanggal</th>
+              <th>No. Invoice</th>
               <th>Kode Barang</th>
               <th>Nama Barang</th>
               <th>Qty</th>
@@ -39,10 +40,12 @@
           <tr>
             <td>{{$no++ }}</td>
             <td>{{ $row->tanggal }}</td>
+            <td>{{ $row->no_faktur }}</td>
             <td>{{ $row->kode_alternatif }}</td>
             <td>{{ $row->nama_alternatif }}</td>
             <td>{{ $row->qty }}</td>
             <td class="nw">
+              <a class="btn btn-xs btn-warning" href="/k_penjualan_ubah/{{$row->id_penjualan}}"><span class="glyphicon glyphicon-edit"></span></a>
               <a class="btn btn-xs btn-danger" href="/k_penjualan_hapus/{{$row->id_penjualan}}" onclick="return confirm('Hapus data?')"><span class="glyphicon glyphicon-trash"></span></a>
             </td>
           </tr>

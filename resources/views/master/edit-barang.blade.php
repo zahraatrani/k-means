@@ -26,7 +26,7 @@
 			</div>
 			<div class="x_content">
 				<br />
-				<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="barang/update/{id_alternatif}" method="post" enctype="multipart/form-data">
+				<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="/ubah_alternatif_simpan/" method="post" enctype="multipart/form-data">
 					{{csrf_field() }}
 
 					<div class="item form-group">
@@ -65,7 +65,7 @@
 					<div class="ln_solid"></div>
 					<div class="item form-group">
 						<div class="col-md-6 col-sm-6 offset-md-3">
-							<a class="btn btn-primary" href="/barang">Cancel</a>
+							<a class="btn btn-primary" href="/k_alternatif">Cancel</a>
 							<button type="submit" class="btn btn-success">Submit</button>
 						</div>
 					</div>

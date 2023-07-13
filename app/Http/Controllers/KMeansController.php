@@ -83,6 +83,14 @@ class KMeansController extends Controller
         return view('kmeans.alternatif_tambah', $data);
     }
 
+    public function alternatif_show($id)
+    {
+        $data['row'] = Alternatif::findOrFail($id);
+        $data['id'] = $id;
+        $data['title'] = 'Ubah Data Barang';
+        return view('kmeans.alternatif_show', $data);
+    }
+    
     public function alternatif_hapus($id)
     {
         DB::table('tbl_barang')->where('id_alternatif', '=', $id)->delete();
@@ -108,7 +116,9 @@ class KMeansController extends Controller
         $alternatif_tabel = new Alternatif;
         $alternatif_tabel->kode_alternatif = $Req->kode;
         $alternatif_tabel->nama_alternatif = $Req->nama;
-        $alternatif_tabel->keterangan = $Req->keterangan;
+        $alternatif_tabel->stock = $Req->stock;
+        $alternatif_tabel->satuan = $Req->satuan;
+        //$alternatif_tabel->keterangan = $Req->keterangan;//
         $alternatif_tabel->save();
 
 
